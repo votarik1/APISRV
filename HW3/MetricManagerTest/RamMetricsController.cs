@@ -1,19 +1,21 @@
-﻿using MetricsСollectionService.Controllers;
+﻿using MetricsManager.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using Xunit;
+using Moq;
 
-
-namespace MetricCollectionTest
+namespace MetricsManagerTest
 {
     public class RamMetricsControllerTests
     {
 
-        private CpuMetricsController controller;
-
+        private RamMetricsController controller;
+        Mock<ILogger<RamMetricsController>> _loggerMock;
         public RamMetricsControllerTests()
         {
-            controller = new CpuMetricsController();
+            _loggerMock = new Mock<ILogger<RamMetricsController>>();
+            controller = new RamMetricsController(_loggerMock.Object);
         }
 
         [Fact]
@@ -31,11 +33,10 @@ namespace MetricCollectionTest
         [Fact]
         public void GetMetricsFromCluster_ReturnsOk()
         {
-            int agentId = 1;
             TimeSpan fromTime = TimeSpan.FromSeconds(0);
             TimeSpan toTime = TimeSpan.FromSeconds(100);
 
-            IActionResult result = controller.GetMetricsFromAllCluster(fromTime, toTime);
+            IActionResult result = controller.GetMetricsFromCluster(fromTime, toTime);
 
             _ = Assert.IsAssignableFrom<IActionResult>(result);
         }

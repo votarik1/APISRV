@@ -1,4 +1,6 @@
-﻿using MetricsManager.Controllers;
+﻿using MetricsAgent.Controllers;
+using MetricsAgent.DAL;
+using MetricsAgent.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,10 +14,12 @@ namespace MetricsManagerTest
 
         private NetworkMetricsController controller;
         Mock<ILogger<NetworkMetricsController>> _loggerMock;
+        Mock<IRepository<NetworkMetrics>> _repositiryMock;
         public NetworkMetricsControllerTests()
         {
+            _repositiryMock = new Mock<IRepository<NetworkMetrics>>();
             _loggerMock = new Mock<ILogger<NetworkMetricsController>>();
-            controller = new NetworkMetricsController(_loggerMock.Object);
+            controller = new NetworkMetricsController(_loggerMock.Object, _repositiryMock.Object);
         }
 
         [Fact]

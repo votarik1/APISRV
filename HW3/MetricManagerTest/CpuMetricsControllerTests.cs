@@ -1,19 +1,22 @@
-using Metrics—ollectionService.Controllers;
+using MetricsManager.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Moq;
 using System;
 using Xunit;
 
 
-namespace MetricCollectionTest
+namespace MetricsManagerTest
 {
     public class CpuMetricsControllerTests
     {
 
         private CpuMetricsController controller;
-
+        Mock<ILogger<CpuMetricsController>> _loggerMock;
         public CpuMetricsControllerTests()
         {
-            controller = new CpuMetricsController();
+            _loggerMock = new Mock<ILogger<CpuMetricsController>>();
+            controller = new CpuMetricsController(_loggerMock.Object);
         }
 
         [Fact]
@@ -34,7 +37,7 @@ namespace MetricCollectionTest
             TimeSpan fromTime = TimeSpan.FromSeconds(0);
             TimeSpan toTime = TimeSpan.FromSeconds(100);
 
-            IActionResult result = controller.GetMetricsFromAllCluster(fromTime, toTime);
+            IActionResult result = controller.GetMetricsFromCluster(fromTime, toTime);
 
             _ = Assert.IsAssignableFrom<IActionResult>(result);
         }

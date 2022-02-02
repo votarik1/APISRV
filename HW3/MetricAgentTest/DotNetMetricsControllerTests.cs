@@ -1,21 +1,26 @@
-﻿using MetricsManager.Controllers;
+﻿using MetricsAgent.Controllers;
+using MetricsAgent.DAL;
+using MetricsAgent.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using Xunit;
 using Moq;
 
+
 namespace MetricsManagerTest
 {
-    public class NetworkMetricsControllerTests
+    public class DotNetMetricsControllerTests
     {
 
-        private NetworkMetricsController controller;
-        Mock<ILogger<NetworkMetricsController>> _loggerMock;
-        public NetworkMetricsControllerTests()
+        private DotNetMetricsController controller;
+        Mock<ILogger<DotNetMetricsController>> _loggerMock;
+        Mock<IRepository<DotNetMetrics>> _repositoryMock;
+        public DotNetMetricsControllerTests()
         {
-            _loggerMock = new Mock<ILogger<NetworkMetricsController>>();
-            controller = new NetworkMetricsController(_loggerMock.Object);
+            _repositoryMock = new Mock<IRepository<DotNetMetrics>>();
+            _loggerMock = new Mock<ILogger<DotNetMetricsController>>();
+            controller = new DotNetMetricsController(_loggerMock.Object, _repositoryMock.Object);
         }
 
         [Fact]

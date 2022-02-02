@@ -1,19 +1,21 @@
-﻿using MetricsСollectionService.Controllers;
+﻿using MetricsManager.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using Xunit;
+using Moq;
 
-
-namespace MetricCollectionTest
+namespace MetricsManagerTest
 {
     public class HddMetricsControllerTests
     {
 
-        private CpuMetricsController controller;
-
+        private HddMetricsController controller;
+        Mock<ILogger<HddMetricsController>> _loggerMock;
         public HddMetricsControllerTests()
         {
-            controller = new CpuMetricsController();
+            _loggerMock = new Mock<ILogger<HddMetricsController>>();
+            controller = new HddMetricsController(_loggerMock.Object);
         }
 
         [Fact]
@@ -34,7 +36,7 @@ namespace MetricCollectionTest
             TimeSpan fromTime = TimeSpan.FromSeconds(0);
             TimeSpan toTime = TimeSpan.FromSeconds(100);
 
-            IActionResult result = controller.GetMetricsFromAllCluster(fromTime, toTime);
+            IActionResult result = controller.GetMetricsFromCluster(fromTime, toTime);
 
             _ = Assert.IsAssignableFrom<IActionResult>(result);
         }

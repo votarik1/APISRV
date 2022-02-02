@@ -1,4 +1,6 @@
-﻿using MetricsManager.Controllers;
+﻿using MetricsAgent.Controllers;
+using MetricsAgent.DAL;
+using MetricsAgent.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,15 +9,17 @@ using Moq;
 
 namespace MetricsManagerTest
 {
-    public class NetworkMetricsControllerTests
+    public class HddMetricsControllerTests
     {
 
-        private NetworkMetricsController controller;
-        Mock<ILogger<NetworkMetricsController>> _loggerMock;
-        public NetworkMetricsControllerTests()
+        private HddMetricsController controller;
+        Mock<ILogger<HddMetricsController>> _loggerMock;
+        Mock<IRepository<HddMetrics>> _repositoryMock;
+        public HddMetricsControllerTests()
         {
-            _loggerMock = new Mock<ILogger<NetworkMetricsController>>();
-            controller = new NetworkMetricsController(_loggerMock.Object);
+            _repositoryMock = new Mock<IRepository<HddMetrics>>();
+            _loggerMock = new Mock<ILogger<HddMetricsController>>();
+            controller = new HddMetricsController(_loggerMock.Object, _repositoryMock.Object);
         }
 
         [Fact]

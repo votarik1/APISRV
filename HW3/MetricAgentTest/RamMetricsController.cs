@@ -1,4 +1,6 @@
-﻿using MetricsManager.Controllers;
+﻿using MetricsAgent.Controllers;
+using MetricsAgent.DAL;
+using MetricsAgent.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,15 +9,17 @@ using Moq;
 
 namespace MetricsManagerTest
 {
-    public class NetworkMetricsControllerTests
+    public class RamMetricsControllerTests
     {
 
-        private NetworkMetricsController controller;
-        Mock<ILogger<NetworkMetricsController>> _loggerMock;
-        public NetworkMetricsControllerTests()
+        private RamMetricsController controller;
+        Mock<ILogger<RamMetricsController>> _loggerMock;
+        Mock<IRepository<RamMetrics>>  _repositiryMock;
+        public RamMetricsControllerTests()
         {
-            _loggerMock = new Mock<ILogger<NetworkMetricsController>>();
-            controller = new NetworkMetricsController(_loggerMock.Object);
+            _repositiryMock = new Mock<IRepository<RamMetrics>>();
+            _loggerMock = new Mock<ILogger<RamMetricsController>>();
+            controller = new RamMetricsController(_loggerMock.Object,_repositiryMock.Object);
         }
 
         [Fact]

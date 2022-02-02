@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using NLog.Web;
 
-namespace MetricsСollectionService
+namespace MetricsManager
 {
     public class Program
     {

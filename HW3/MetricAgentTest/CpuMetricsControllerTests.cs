@@ -1,21 +1,26 @@
-﻿using MetricsManager.Controllers;
+using MetricsAgent.Controllers;
+using MetricsAgent.DAL;
+using MetricsAgent.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Moq;
 using System;
 using Xunit;
-using Moq;
+
 
 namespace MetricsManagerTest
 {
-    public class NetworkMetricsControllerTests
+    public class CpuMetricsControllerTests
     {
 
-        private NetworkMetricsController controller;
-        Mock<ILogger<NetworkMetricsController>> _loggerMock;
-        public NetworkMetricsControllerTests()
+        private CpuMetricsController controller;
+        Mock<ILogger<CpuMetricsController>> _loggerMock;
+        Mock<IRepository<CpuMetrics>> _repositoryMock;
+        public CpuMetricsControllerTests()
         {
-            _loggerMock = new Mock<ILogger<NetworkMetricsController>>();
-            controller = new NetworkMetricsController(_loggerMock.Object);
+            _repositoryMock = new Mock<IRepository<CpuMetrics>>();
+            _loggerMock = new Mock<ILogger<CpuMetricsController>>();
+            controller = new CpuMetricsController(_loggerMock.Object, _repositoryMock.Object);
         }
 
         [Fact]
@@ -41,6 +46,6 @@ namespace MetricsManagerTest
             _ = Assert.IsAssignableFrom<IActionResult>(result);
         }
 
-
+       
     }
 }

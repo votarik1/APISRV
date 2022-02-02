@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using MetricsAgent.Models;
 using MetricsAgent.DAL;
+using System;
 
 namespace MetricsAgent.Controllers
 {
@@ -21,19 +22,19 @@ namespace MetricsAgent.Controllers
             _logger = logger;
             _cpuMetricsRepository = cpuMetricsRepository;
         }
-        [HttpGet("Sql-test")]
-        public IActionResult TryToSqlLite()
+
+        [HttpGet("agent/{agentId}/from/{fromTime}/to/{toTime}")]
+        public IActionResult GetMetricsFromAgent([FromRoute] int agentId, [FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
-            string cs = "Data Source=:memory:";
-            string stm = "Select SQLITE_VERSION()";
-            using (var con = new SQLiteConnection(cs))
-            {
-                _logger.LogInformation("MetricsAgent Logger Works!");
-                con.Open();
-                using var cmd = new SQLiteCommand(stm, con);
-                string version = cmd.ExecuteScalar().ToString();
-                return Ok(version);
-            }
+            return Ok();
         }
+
+        [HttpGet("from/{fromTime}/to/{toTime}")]
+        public IActionResult GetMetricsFromCluster([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        {
+            return Ok();
+        }
+
+
     }
 }

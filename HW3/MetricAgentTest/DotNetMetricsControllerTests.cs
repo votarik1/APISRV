@@ -8,7 +8,7 @@ using Xunit;
 using Moq;
 
 
-namespace MetricsManagerTest
+namespace MetricsAgentTest
 {
     public class DotNetMetricsControllerTests
     {

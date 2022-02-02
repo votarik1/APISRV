@@ -18,7 +18,6 @@ namespace MetricsManager.Controllers
             _logger = logger;
         }
 
-        [HttpGet()]
 
         [HttpPost("register")]
         public IActionResult RegisterAgent([FromBody] AgentInfo agentInfo)

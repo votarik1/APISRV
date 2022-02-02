@@ -8,7 +8,7 @@ using System;
 using Xunit;
 
 
-namespace MetricsManagerTest
+namespace MetricsAgentTest
 {
     public class CpuMetricsControllerTests
     {

@@ -15,8 +15,5 @@ namespace Core.Models
 
         }
 
-        public HddMetric(long Id, long Time, long Value) : base(Id, Time, Value)
-        {
-        }
     }
 }

@@ -15,8 +15,5 @@ namespace Core.Models
 
         }
 
-        public NetworkMetric(System.Int64 Id, System.Int64 Time, System.Int64 Value) : base(Id, Time, Value)
-        {
-        }
     }
 }

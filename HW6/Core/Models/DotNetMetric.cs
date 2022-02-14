@@ -16,8 +16,5 @@ namespace Core.Models
 
         }
 
-        public DotNetMetric(long Id, long Time, long Value) : base(Id, Time, Value)
-        {
-        }
     }
 }

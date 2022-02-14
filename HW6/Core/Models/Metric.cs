@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 namespace Core.Models
 {
     public abstract class Metric
-    {
-        
-        public long ID { get; set; }
-        public long Value { get; set; }
+    {        
+        public int ID { get; set; }
+        public int Value { get; set; }
         public TimeSpan Time { get; set; }
 
         public Metric(int value, TimeSpan time)
@@ -18,16 +17,6 @@ namespace Core.Models
             Time = time;
         }
 
-        public Metric(long id,  long time, long value)
-        {
-            Value = value;
-            Time = TimeSpan.FromSeconds(time);
-            ID = id;
-        }
-
-        public Metric()
-        {
-
-        }
+        
     }
 }

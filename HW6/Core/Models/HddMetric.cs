@@ -8,12 +8,15 @@ namespace Core.Models
 {
     public class HddMetric : Metric
     {
-        
+
 
         public HddMetric(int value, TimeSpan time) : base(value, time)
         {
 
         }
 
+        public HddMetric(long id, long time, long value) : base(id, time, value)
+        {
+        }
     }
 }

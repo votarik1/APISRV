@@ -9,12 +9,15 @@ namespace Core.Models
 {
     public class DotNetMetric:Metric
     {
-        
+
 
         public DotNetMetric(int value, TimeSpan time) : base(value, time)
         {
 
         }
 
+        public DotNetMetric(long id, long time, long value) : base(id, time, value)
+        {
+        }
     }
 }

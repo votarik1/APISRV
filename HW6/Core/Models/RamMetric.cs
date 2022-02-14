@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 namespace Core.Models
 {
     public class RamMetric : Metric
-    {        
+    { 
+
         public RamMetric(int value, TimeSpan time) : base(value, time)
         {
         }
 
+        public RamMetric(long id, long time, long value) : base(id, time, value)
+        {
+        }
     }
 }

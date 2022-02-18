@@ -7,5 +7,6 @@ namespace Core.Models.DTO
 {
     public class RamMetricDto : MetricDto
     {
+
     }
 }

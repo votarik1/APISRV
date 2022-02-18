@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace Core.Models.DTO
 {
-    public class CpuMetricDto: MetricDto
+    public class CpuMetricDto : MetricDto
     {
+        
     }
 }

@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 using Core.Interfaces;
 using Core.Models;
 using AutoMapper;
-using MetricsAgent.Mappers;
 using FluentMigrator.Runner;
 using Quartz.Spi;
 using Quartz;
@@ -23,6 +22,7 @@ using MetricsAgent.Jobs;
 using Core.DAL;
 using Core.DAL.Migrations;
 using Core.Quartz;
+using Core.Mappers;
 
 namespace MetricsAgent
 {

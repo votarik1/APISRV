@@ -40,7 +40,7 @@ namespace MetricsManager.Jobs
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<DotNetMetric, DotNetMetricDto>());
                 var mapper = config.CreateMapper();
-                _repository.Create(mapper.Map<DotNetMetric>(item));
+               // _repository.Create(mapper.Map<DotNetMetric>(item));
             }
             return Task.CompletedTask;
         }

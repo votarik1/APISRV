@@ -39,7 +39,7 @@ namespace MetricsManager.Jobs
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<HddMetric, HddMetricDto>());
                 var mapper = config.CreateMapper();
-                _repository.Create(mapper.Map<HddMetric>(item));
+               // _repository.Create(mapper.Map<HddMetric>(item));
             }
             return Task.CompletedTask;
         }

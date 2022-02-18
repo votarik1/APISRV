@@ -38,9 +38,7 @@ namespace MetricsManager.Jobs
             }
             foreach (var item in cpuMetricsResponses.CpuMetrics)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<CpuMetric, CpuMetricDto>());
-                var mapper = config.CreateMapper();
-                _repository.Create(mapper.Map<CpuMetric>(item));
+                 _repository.Create(_mapper.Map<CpuMetric>(item));
             }
             return Task.CompletedTask;
 

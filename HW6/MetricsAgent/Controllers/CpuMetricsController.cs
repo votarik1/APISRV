@@ -44,9 +44,7 @@ namespace MetricsAgent.Controllers
         public IActionResult GetMetricsFromCluster([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
 
-            _logger.LogInformation($"fromTime {fromTime.TotalSeconds}, toTime {toTime.TotalSeconds}");
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<CpuMetric, CpuMetricDto>());
-            var mapper = config.CreateMapper();
+            _logger.LogInformation($"fromTime {fromTime.TotalSeconds}, toTime {toTime.TotalSeconds}");            
             IList<CpuMetric> cpuMetricsList = _cpuMetricsRepository.GetByTime(fromTime.TotalSeconds, toTime.TotalSeconds);
             AllCpuMetricsResponses responses = new AllCpuMetricsResponses()
             {
@@ -54,7 +52,7 @@ namespace MetricsAgent.Controllers
             };
             foreach (CpuMetric item in cpuMetricsList)
             {
-                responses.CpuMetrics.Add(mapper.Map<CpuMetricDto>(item));
+                responses.CpuMetrics.Add(_mapper.Map<CpuMetricDto>(item));
             }
             return Ok(responses);
         }

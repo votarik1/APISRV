@@ -38,8 +38,6 @@ namespace MetricsAgent.Controllers
         public IActionResult GetMetricsFromCluster([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"fromTime {fromTime.TotalSeconds}, toTime {toTime.TotalSeconds}");
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<RamMetric, RamMetricDto>());
-            var mapper = config.CreateMapper();
             IList<RamMetric> ramMetricsList = _ramMetricsRepository.GetByTime(fromTime.TotalSeconds, toTime.TotalSeconds);
             AllRamMetricsResponses responses = new AllRamMetricsResponses()
             {
@@ -47,7 +45,7 @@ namespace MetricsAgent.Controllers
             };
             foreach (RamMetric item in ramMetricsList)
             {
-                responses.RamMetrics.Add(mapper.Map<RamMetricDto>(item));
+                responses.RamMetrics.Add(_mapper.Map<RamMetricDto>(item));
             }
             return Ok(responses);
         }

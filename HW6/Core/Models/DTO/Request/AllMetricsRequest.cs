@@ -8,10 +8,10 @@ namespace Core.Models.DTO.Request
 {
     public abstract class AllMetricsRequest
     {        
-        protected AllMetricsRequest(TimeSpan from, TimeSpan to)
+        protected AllMetricsRequest(TimeSpan from_, TimeSpan to_)
         {
-            From = from;
-            To = to;
+            From = from_;
+            To = to_;
         }
 
         public TimeSpan To { get; set; }

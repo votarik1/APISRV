@@ -8,14 +8,15 @@ namespace Core.Models
 {
     public class NetworkMetric : Metric
     {
-
-
         public NetworkMetric(int value, TimeSpan time) : base(value, time)
         {
-
         }
 
         public NetworkMetric(long id, long time, long value) : base(id, time, value)
+        {
+        }
+
+        public NetworkMetric(int id, int value, TimeSpan time) : base(id, value, time)
         {
         }
     }

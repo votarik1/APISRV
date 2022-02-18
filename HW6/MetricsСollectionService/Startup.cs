@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using MetricsManager.Mappers;
 using MetricsManager.Client;
 using Polly;
 using Core.Models;
@@ -25,6 +24,7 @@ using Core.Quartz;
 using Quartz;
 using Quartz.Impl;
 using MetricsManager.Jobs;
+using Core.Mappers;
 
 namespace MetricsManager
 {

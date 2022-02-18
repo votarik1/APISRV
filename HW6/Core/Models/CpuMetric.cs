@@ -8,14 +8,15 @@ namespace Core.Models
 {
     public class CpuMetric:Metric
     {
-
-
         public CpuMetric(int value, TimeSpan time) : base(value, time)
         {
-
         }
 
         public CpuMetric(long id, long time, long value) : base(id, time, value)
+        {
+        }
+
+        public CpuMetric(int id, int value, TimeSpan time) : base(id, value, time)
         {
         }
     }

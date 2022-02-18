@@ -39,7 +39,7 @@ namespace MetricsManager.Jobs
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<RamMetric, RamMetricDto>());
                 var mapper = config.CreateMapper();
-                _repository.Create(mapper.Map<RamMetric>(item));
+               // _repository.Create(mapper.Map<RamMetric>(item));
             }
             return Task.CompletedTask;
         }

@@ -38,8 +38,6 @@ namespace MetricsAgent.Controllers
         public IActionResult GetMetricsFromCluster([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"fromTime {fromTime.TotalSeconds}, toTime {toTime.TotalSeconds}");
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<NetworkMetric, NetworkMetricDto>());
-            var mapper = config.CreateMapper();
             IList<NetworkMetric> networkMetricsList = _networkMetricsRepository.GetByTime(fromTime.TotalSeconds, toTime.TotalSeconds);
             AllNetworkMetricsResponses responses = new AllNetworkMetricsResponses()
             {
@@ -47,7 +45,7 @@ namespace MetricsAgent.Controllers
             };
             foreach (NetworkMetric item in networkMetricsList)
             {
-                responses.NetworkMetrics.Add(mapper.Map<NetworkMetricDto>(item));
+                responses.NetworkMetrics.Add(_mapper.Map<NetworkMetricDto>(item));
             }
             return Ok(responses);
         }

@@ -12,6 +12,12 @@ namespace Core.Models
         public TimeSpan Time { get; set; }
 
 
+        public Metric(int id, int value, TimeSpan time)
+        {
+            ID = id;
+            Value = value;
+            Time = time;
+        }
         public Metric(int value, TimeSpan time)
         {
             Value = value;
@@ -24,6 +30,7 @@ namespace Core.Models
             Time = TimeSpan.FromSeconds(time);
             ID = (int)id;
         }
+
 
     }
 }

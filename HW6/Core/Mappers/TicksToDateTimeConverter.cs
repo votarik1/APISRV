@@ -3,7 +3,7 @@ using System;
 
 namespace Core.Mappers
 {
-    class TicksToDateTimeConverter : ITypeConverter<long, DateTime>
+   public class TicksToDateTimeConverter : ITypeConverter<long, DateTime>
     {
         public DateTime Convert(long source, DateTime destination, ResolutionContext context)
         {
